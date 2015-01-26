@@ -240,6 +240,7 @@ exports.format('dev', function(tokens, req, res){
   return fn(tokens, req, res);
 });
 
+exports.format('testing', ':response-time ms :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"')
 /**
  * request url
  */
