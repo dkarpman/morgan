@@ -240,7 +240,7 @@ exports.format('dev', function(tokens, req, res){
   return fn(tokens, req, res);
 });
 
-exports.format('testing', ':response-time ms :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"')
+exports.format('testing', ':response-time ms :lang :country_code :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"')
 /**
  * request url
  */
@@ -249,6 +249,12 @@ exports.token('url', function(req){
   return req.originalUrl || req.url;
 });
 
+exports.token('lang', function(req) {
+  return (req && req.pb_obj_to_use && req.pb_obj_to_use.lang ? req.pb_obj_to_use.lang : 'zz');
+});
+exports.token('country_code', function(req) {
+  return (req && req.pb_obj_to_use && req.pb_obj_to_use.country_code ? req.pb_obj_to_use.country_code : 'ZZ');
+});
 /**
  * request method
  */
