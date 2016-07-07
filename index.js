@@ -241,6 +241,8 @@ exports.format('dev', function(tokens, req, res){
 });
 
 exports.format('testing', ':response-time ms :lang :country_code :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"')
+exports.format('testing2', ':response-time ms :meta2 :lang2 :country_code2 :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"')
+
 /**
  * request url
  */
@@ -254,6 +256,16 @@ exports.token('lang', function(req) {
 });
 exports.token('country_code', function(req) {
   return (req && req.pb_obj_to_use && req.pb_obj_to_use.country_code ? req.pb_obj_to_use.country_code : 'ZZ');
+});
+
+exports.token('lang2', function(req) {
+  return (req && req.lang ? req.lang : 'zz');
+});
+exports.token('country_code2', function(req) {
+  return (req && req.country_code ? req.country_code : 'ZZ');
+});
+exports.token('meta2', function(req) {
+  return (req && req.meta ? req.meta : '-');
 });
 /**
  * request method
